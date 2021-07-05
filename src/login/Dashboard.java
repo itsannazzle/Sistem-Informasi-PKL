@@ -51,6 +51,7 @@ public class Dashboard extends javax.swing.JFrame {
         ShowDate();
         tabelAbsen();
         tabelDataSiswa();
+        tabelDataSekolah();
         ButtonGroup bg = new ButtonGroup();
         ButtonGroup bg2 = new ButtonGroup();
         
@@ -107,7 +108,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel44 = new javax.swing.JLabel();
         jLabel43 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tabelDataSekolah = new javax.swing.JTable();
         jTextField5 = new javax.swing.JTextField();
         jadwaPsg = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -142,6 +143,8 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel37 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         nilaiSiswa = new javax.swing.JPanel();
         jPanel13 = new javax.swing.JPanel();
         jLabel40 = new javax.swing.JLabel();
@@ -402,13 +405,18 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel10.add(jLabel42, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, -1, -1));
 
         jLabel44.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\btn_cari.png")); // NOI18N
+        jLabel44.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel44MouseClicked(evt);
+            }
+        });
         jPanel10.add(jLabel44, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
 
         jLabel43.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         jLabel43.setText("Nama Sekolah :");
         jPanel10.add(jLabel43, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, -1, 30));
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tabelDataSekolah.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -416,7 +424,7 @@ public class Dashboard extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable3);
+        jScrollPane3.setViewportView(tabelDataSekolah);
 
         jPanel10.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 1020, 550));
 
@@ -536,7 +544,7 @@ public class Dashboard extends javax.swing.JFrame {
 
         jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
         jRadioButton1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jRadioButton1.setText("Laki-laki");
+        jRadioButton1.setText("Laki-Laki");
         jPanel11.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, -1, 30));
 
         jRadioButton2.setBackground(new java.awt.Color(255, 255, 255));
@@ -578,7 +586,28 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel11.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, -1));
 
         jLabel39.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\btn_hapus.png")); // NOI18N
+        jLabel39.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel39MouseClicked(evt);
+            }
+        });
         jPanel11.add(jLabel39, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, -1, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\close.png")); // NOI18N
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
+        jPanel11.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, -1, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\minim.png")); // NOI18N
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel8MouseClicked(evt);
+            }
+        });
+        jPanel11.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, -1, -1));
 
         dataSiswa.add(jPanel11);
         jPanel11.setBounds(0, 0, 1170, 880);
@@ -818,9 +847,14 @@ void ShowDate(){
         }
         return nisFound;
     }
-    public static void AddRowToJTable(Object[] dataRow)
+    public static void AddRowToTabelAbsen(Object[] dataRow)
     {
         DefaultTableModel model = (DefaultTableModel)tabelabsen.getModel();
+        model.addRow(dataRow);
+    }
+    public static void AddRowToTabelDataSiswa(Object[] dataRow)
+    {
+        DefaultTableModel model = (DefaultTableModel)tabelDataSiswa.getModel();
         model.addRow(dataRow);
     }
     private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
@@ -833,7 +867,7 @@ void ShowDate(){
            ps.setString(2, jLabel29.getText());
            ps.setString(3, jLabel27.getText());
            ps.executeUpdate();
-           AddRowToJTable(new Object[]{
+           AddRowToTabelAbsen(new Object[]{
                jTextField1.getText(),
                jLabel29.getText(),
                jLabel27.getText(),
@@ -872,7 +906,7 @@ void ShowDate(){
        } else if (jRadioButton4.isSelected()) {
            divisi = "PKL";
         }
-       else {
+       
         try{
            
            PreparedStatement ps = c.prepareStatement("insert into datasiswa values (?,?,?,?,?,?,?)");
@@ -887,7 +921,7 @@ void ShowDate(){
           
            ps.executeUpdate();
            JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
-           AddRowToJTable(new Object[]{
+           AddRowToTabelDataSiswa(new Object[]{
                jTextField3.getText(),
                jTextField2.getText(),
                jTextField4.getText(),
@@ -896,18 +930,52 @@ void ShowDate(){
                date.format(jDateChooser2.getDate()),
                divisi
            });
-            
+            reset();
        } catch(Exception e){
            System.out.println("Gagal tambahkan data");
            JOptionPane.showMessageDialog(null,e);
        
        }
-    }
+    
     }//GEN-LAST:event_jLabel37MouseClicked
-
+   private void reset(){
+    jTextField3.setText("");
+    jTextField2.setText("");
+    jTextField4.setText(""); 
+    jDateChooser1.setCalendar(null);
+    jDateChooser2.setCalendar(null);
+}
     
     private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
-            // TODO add your handling code here:
+       String gender = "Perempuan";
+       String divisi = "PSG";
+       if(jRadioButton1.isSelected()){
+           gender = "Laki-Laki";
+       } else if (jRadioButton4.isSelected()) {
+           divisi = "PKL";
+        }
+        try{
+           PreparedStatement ps = c.prepareStatement("UPDATE datasiswa SET Nama_Siswa=?,Asal_Sekolah=?,Jenis_Kelamin=?,Tanggal_Masuk=?,Tanggal_Selesai=?,Divisi=? WHERE Nis_Siswa=?");
+           ps.setString(7, jTextField3.getText());
+           ps.setString(1, jTextField2.getText());
+           ps.setString(2, jTextField4.getText());
+           ps.setString(3, gender);
+           ps.setString(4, date.format(jDateChooser1.getDate()));
+           ps.setString(5, date.format(jDateChooser2.getDate()));
+           ps.setString(6, divisi);
+      
+           ps.executeUpdate();
+           JOptionPane.showMessageDialog(null, "Data berhasil diubah");
+           tabelDataSiswa();
+            reset();
+       
+       } catch(Exception e){
+           System.out.println("Gagal ubah data");
+           JOptionPane.showMessageDialog(null,e);
+       
+       }
+       
+    
     }//GEN-LAST:event_jLabel38MouseClicked
 
     private void tabelDataSiswaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelDataSiswaMouseClicked
@@ -935,11 +1003,78 @@ void ShowDate(){
             } else {
                 jRadioButton4.setSelected(true);
             }
+             jTextField3.setEditable(false);
              
         } catch(Exception e){
 
         }    
     }//GEN-LAST:event_tabelDataSiswaMouseClicked
+
+    private void jLabel8MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseClicked
+        setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_jLabel8MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        try {
+            int yn = JOptionPane.showConfirmDialog(null, "Keluar aplikasi ?", "Keluar", JOptionPane.YES_NO_OPTION);
+            if (yn == 0){
+                Login l = new Login();
+                l.setVisible(true);
+                this.dispose();
+            } else {
+                
+            }
+            
+        } catch(Exception e ){
+            JOptionPane.showMessageDialog(null, "Something went wrong");
+        }
+    }//GEN-LAST:event_jLabel7MouseClicked
+
+    private void jLabel39MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel39MouseClicked
+       int i = tabelDataSiswa.getSelectedRow();
+        TableModel mode = tabelDataSiswa.getModel();
+            
+        try {
+            int yn = JOptionPane.showConfirmDialog(null, "Yakin menghapus data ?", "Hapus data", JOptionPane.YES_NO_OPTION);
+            if (yn == 0){
+                PreparedStatement ps = c.prepareStatement("delete from datasiswa where Nis_Siswa='"+mode.getValueAt(i, 0).toString()+"'");
+                ps.executeUpdate();
+               JOptionPane.showMessageDialog(null, "Data terhapus");
+               tabelDataSiswa();
+               reset();
+            } else {
+                
+            }
+            
+        } catch(Exception e ){
+            JOptionPane.showMessageDialog(null, "Something went wrong");
+        }
+    }//GEN-LAST:event_jLabel39MouseClicked
+
+    private void jLabel44MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel44MouseClicked
+        Object [] header = {"NIS","Nama Siswa","Asal Sekolah", "Jenis Kelamin","Tanggal Mulai","Tanggal Selesai","Divisi"
+        };
+        DefaultTableModel model = new DefaultTableModel(null,header);
+        tabelDataSekolah.setModel(model);
+        try{
+            PreparedStatement ps = c.prepareStatement("select * from datasiswa where concat(Nis_Siswa,Nama_Siswa,Asal_Sekolah,Jenis_Kelamin,Tanggal_Masuk,Tanggal_Selesai,Divisi) like '%"+jTextField5.getText()+"%'");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                String c1 = rs.getString("Nis_Siswa");
+                String c2 = rs.getString("Nama_Siswa");
+                String c3 = rs.getString("Asal_Sekolah");
+                String c4 = rs.getString("Jenis_Kelamin");
+                String c5 = rs.getString("Tanggal_Masuk");
+                String c6 = rs.getString("Tanggal_Selesai");
+                String c7 = rs.getString("Divisi");
+                
+                String[] data = {c1,c2,c3,c4,c5,c6,c7};
+                model.addRow(data);
+            }
+        } catch( Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_jLabel44MouseClicked
 public void tabelAbsen(){
         Object [] header = {"NIS","Tanggal Absen","Waktu Absen"
     };
@@ -968,6 +1103,34 @@ public void tabelDataSiswa(){
         
         DefaultTableModel model = new DefaultTableModel(null,header);
         tabelDataSiswa.setModel(model);
+        try{
+            Connection c = getConnection();
+            PreparedStatement ps = c.prepareStatement("select * from datasiswa order by Nis_Siswa asc");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                String c1 = rs.getString("Nis_Siswa");
+                String c2 = rs.getString("Nama_Siswa");
+                String c3 = rs.getString("Asal_Sekolah");
+                String c4 = rs.getString("Jenis_Kelamin");
+                String c5 = rs.getString("Tanggal_Masuk");
+                String c6 = rs.getString("Tanggal_Selesai");
+                String c7 = rs.getString("Divisi");
+                
+                String[] data = {c1,c2,c3,c4,c5,c6,c7};
+                model.addRow(data);
+            }
+            
+        } catch( Exception e){
+            
+        }
+    }
+
+public void tabelDataSekolah(){
+        Object [] header = {"NIS","Nama Siswa","Asal Sekolah", "Jenis Kelamin","Tanggal Mulai","Tanggal Selesai","Divisi"
+    };
+        
+        DefaultTableModel model = new DefaultTableModel(null,header);
+        tabelDataSekolah.setModel(model);
         try{
             Connection c = getConnection();
             PreparedStatement ps = c.prepareStatement("select * from datasiswa order by Nis_Siswa asc");
@@ -1075,6 +1238,8 @@ public void tabelDataSiswa(){
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -1097,7 +1262,6 @@ public void tabelDataSiswa(){
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
     private javax.swing.JTextField jTextField1;
@@ -1114,6 +1278,7 @@ public void tabelDataSiswa(){
     private javax.swing.JTextField jTextField9;
     private javax.swing.JPanel jadwaPsg;
     private javax.swing.JPanel nilaiSiswa;
+    private static javax.swing.JTable tabelDataSekolah;
     public static javax.swing.JTable tabelDataSiswa;
     private static javax.swing.JTable tabelabsen;
     // End of variables declaration//GEN-END:variables
