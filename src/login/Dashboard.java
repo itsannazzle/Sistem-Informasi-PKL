@@ -5,24 +5,31 @@
  */
 package login;
 
+import com.mysql.cj.xdevapi.Result;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /**
  *
  * @author ASUS
  */
 public class Dashboard extends javax.swing.JFrame {
-Connection c = getConnection();
-    
+    Connection c = getConnection();
+    DefaultTableModel mode = new DefaultTableModel();
+    SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
     Color panelclicked;
     Color paneldefault;
     /**
@@ -42,6 +49,17 @@ Connection c = getConnection();
         jPanel9.setBackground(paneldefault);
         ShowTime();
         ShowDate();
+        tabelAbsen();
+        tabelDataSiswa();
+        ButtonGroup bg = new ButtonGroup();
+        ButtonGroup bg2 = new ButtonGroup();
+        
+        bg.add(jRadioButton1);
+        bg.add(jRadioButton2);
+        bg2.add(jRadioButton3);
+        bg2.add(jRadioButton4);
+        jRadioButton3.setSelected(true);
+        jRadioButton2.setSelected(true);
         
     }
 
@@ -75,7 +93,7 @@ Connection c = getConnection();
         jPanel12 = new javax.swing.JPanel();
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelabsen = new javax.swing.JTable();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
@@ -102,7 +120,7 @@ Connection c = getConnection();
         dataSiswa = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tabelDataSiswa = new javax.swing.JTable();
         jLabel32 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
@@ -323,18 +341,15 @@ Connection c = getConnection();
         jPanel12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel12.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 260, 262, 30));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelabsen.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {},
-                {},
-                {},
-                {}
+
             },
             new String [] {
-
+                "Title 1", "Title 2", "Title 3"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelabsen);
 
         jPanel12.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 392, 1050, 268));
 
@@ -344,6 +359,11 @@ Connection c = getConnection();
 
         jLabel25.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel25.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\btn_absen.png")); // NOI18N
+        jLabel25.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel25MouseClicked(evt);
+            }
+        });
         jPanel12.add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 260, -1, -1));
 
         jLabel27.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -452,7 +472,7 @@ Connection c = getConnection();
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tabelDataSiswa.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -460,7 +480,12 @@ Connection c = getConnection();
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane2.setViewportView(jTable2);
+        tabelDataSiswa.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelDataSiswaMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tabelDataSiswa);
 
         jPanel11.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 1040, 280));
 
@@ -489,6 +514,7 @@ Connection c = getConnection();
         jTextField4.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jPanel11.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 200, 30));
 
+        jDateChooser1.setDateFormatString("dd-MM-yyyy");
         jDateChooser1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jPanel11.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 70, 200, 30));
 
@@ -500,6 +526,7 @@ Connection c = getConnection();
         jLabel33.setText("Tanggal Selsai :");
         jPanel11.add(jLabel33, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 120, -1, 30));
 
+        jDateChooser2.setDateFormatString("dd-MM-yyyy");
         jDateChooser2.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jPanel11.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 120, 200, 30));
 
@@ -535,9 +562,19 @@ Connection c = getConnection();
         jPanel11.add(jLabel36, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, -1, -1));
 
         jLabel37.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\btn_simpan.png")); // NOI18N
+        jLabel37.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel37MouseClicked(evt);
+            }
+        });
         jPanel11.add(jLabel37, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
 
         jLabel38.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\btn_ubah.png")); // NOI18N
+        jLabel38.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel38MouseClicked(evt);
+            }
+        });
         jPanel11.add(jLabel38, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, -1));
 
         jLabel39.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\btn_hapus.png")); // NOI18N
@@ -767,6 +804,191 @@ void ShowDate(){
          }
     }//GEN-LAST:event_MouseClicked
 
+    public boolean absenByNip(String nis){
+        boolean nisFound = false;
+        try {
+            PreparedStatement ps = c.prepareStatement("select * from datasiswa where Nis_Siswa=?");
+            ps.setString(1, nis);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                nisFound = true;
+            }
+        } catch(Exception e) {
+         
+        }
+        return nisFound;
+    }
+    public static void AddRowToJTable(Object[] dataRow)
+    {
+        DefaultTableModel model = (DefaultTableModel)tabelabsen.getModel();
+        model.addRow(dataRow);
+    }
+    private void jLabel25MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel25MouseClicked
+       String tanggal = jLabel29.getText();
+       String waktu = jLabel27.getText();
+       if(absenByNip(jTextField1.getText())){
+            try {
+            PreparedStatement ps = c.prepareStatement("insert into absen values (?,?,?)");
+           ps.setString(1, jTextField1.getText());
+           ps.setString(2, jLabel29.getText());
+           ps.setString(3, jLabel27.getText());
+           ps.executeUpdate();
+           AddRowToJTable(new Object[]{
+               jTextField1.getText(),
+               jLabel29.getText(),
+               jLabel27.getText(),
+           });
+       } catch(SQLException e){
+           System.out.println("Gagal melakukan absen");
+           JOptionPane.showMessageDialog(null,e);
+       }
+            
+       } else {
+         JOptionPane.showMessageDialog(null, "NIS Tidak ditemukan");
+       }
+    }//GEN-LAST:event_jLabel25MouseClicked
+    public boolean checkDuplicate (String duplicate){
+    boolean checkuser = false;
+    
+    try{
+        PreparedStatement ps = c.prepareStatement("select * from datasiswa where nip =?");
+        ps.setString(1, duplicate);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()){
+            checkuser = true;
+        }
+        
+    } catch (Exception e){
+        
+    } return checkuser;
+}
+    private void jLabel37MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel37MouseClicked
+       String gender = "Perempuan";
+       String divisi = "PSG";
+       if(jRadioButton1.isSelected()){
+           gender = "Laki-Laki";
+       } else if(absenByNip(jTextField3.getText())){
+           JOptionPane.showMessageDialog(null, "NIS sudah digunakan", "Warning", 2);
+       } else if (jRadioButton4.isSelected()) {
+           divisi = "PKL";
+        }
+       else {
+        try{
+           
+           PreparedStatement ps = c.prepareStatement("insert into datasiswa values (?,?,?,?,?,?,?)");
+           ps.setString(1, jTextField3.getText());
+           ps.setString(2, jTextField2.getText());
+           ps.setString(3, jTextField4.getText());
+           ps.setString(4, gender);
+           ps.setString(5, date.format(jDateChooser1.getDate()));
+           ps.setString(6, date.format(jDateChooser2.getDate()));
+           ps.setString(7, divisi);
+          
+          
+           ps.executeUpdate();
+           JOptionPane.showMessageDialog(null, "Data berhasil ditambahkan");
+           AddRowToJTable(new Object[]{
+               jTextField3.getText(),
+               jTextField2.getText(),
+               jTextField4.getText(),
+               gender,
+               date.format(jDateChooser1.getDate()),
+               date.format(jDateChooser2.getDate()),
+               divisi
+           });
+            
+       } catch(Exception e){
+           System.out.println("Gagal tambahkan data");
+           JOptionPane.showMessageDialog(null,e);
+       
+       }
+    }
+    }//GEN-LAST:event_jLabel37MouseClicked
+
+    
+    private void jLabel38MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel38MouseClicked
+            // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel38MouseClicked
+
+    private void tabelDataSiswaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelDataSiswaMouseClicked
+      try{ int i = tabelDataSiswa.getSelectedRow();
+            TableModel mode = tabelDataSiswa.getModel();
+             
+            jTextField3.setText(mode.getValueAt(i, 0).toString());
+            jTextField2.setText(mode.getValueAt(i, 1).toString());
+            jTextField4.setText(mode.getValueAt(i, 2).toString());
+            String gender = mode.getValueAt(i, 3).toString();
+             if ( "Laki-Laki".equals(gender)){
+                jRadioButton1.setSelected(true);
+            } else {
+                jRadioButton2.setSelected(true);
+            }
+            java.util.Date tgl_mulai = date.parse((String)mode.getValueAt(i, 4));
+            java.util.Date tgl_selsai = date.parse((String)mode.getValueAt(i, 5));
+           
+            jDateChooser1.setDate(tgl_mulai);
+            jDateChooser2.setDate(tgl_selsai);
+            
+           String divisi = mode.getValueAt(i, 6).toString();
+             if ( "PSG".equals(divisi)){
+                jRadioButton3.setSelected(true);
+            } else {
+                jRadioButton4.setSelected(true);
+            }
+             
+        } catch(Exception e){
+
+        }    
+    }//GEN-LAST:event_tabelDataSiswaMouseClicked
+public void tabelAbsen(){
+        Object [] header = {"NIS","Tanggal Absen","Waktu Absen"
+    };
+        DefaultTableModel model = new DefaultTableModel(null,header);
+        tabelabsen.setModel(model);
+        try{
+            Connection c = getConnection();
+            PreparedStatement ps = c.prepareStatement("select * from absen order by tanggal asc");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                String c1 = rs.getString("nis");
+                String c2 = rs.getString("tanggal");
+                String c3 = rs.getString("waktu");
+                
+                String[] data = {c1,c2,c3};
+                model.addRow(data);
+            }
+        } catch( Exception e){
+            
+        }
+    }
+
+public void tabelDataSiswa(){
+        Object [] header = {"NIS","Nama Siswa","Asal Sekolah", "Jenis Kelamin","Tanggal Mulai","Tanggal Selesai","Divisi"
+    };
+        
+        DefaultTableModel model = new DefaultTableModel(null,header);
+        tabelDataSiswa.setModel(model);
+        try{
+            Connection c = getConnection();
+            PreparedStatement ps = c.prepareStatement("select * from datasiswa order by Nis_Siswa asc");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                String c1 = rs.getString("Nis_Siswa");
+                String c2 = rs.getString("Nama_Siswa");
+                String c3 = rs.getString("Asal_Sekolah");
+                String c4 = rs.getString("Jenis_Kelamin");
+                String c5 = rs.getString("Tanggal_Masuk");
+                String c6 = rs.getString("Tanggal_Selesai");
+                String c7 = rs.getString("Divisi");
+                
+                String[] data = {c1,c2,c3,c4,c5,c6,c7};
+                model.addRow(data);
+            }
+            
+        } catch( Exception e){
+            
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -875,8 +1097,6 @@ void ShowDate(){
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     private javax.swing.JTable jTable5;
@@ -884,8 +1104,8 @@ void ShowDate(){
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
     private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    public javax.swing.JTextField jTextField2;
+    public javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
@@ -894,5 +1114,7 @@ void ShowDate(){
     private javax.swing.JTextField jTextField9;
     private javax.swing.JPanel jadwaPsg;
     private javax.swing.JPanel nilaiSiswa;
+    public static javax.swing.JTable tabelDataSiswa;
+    private static javax.swing.JTable tabelabsen;
     // End of variables declaration//GEN-END:variables
 }
