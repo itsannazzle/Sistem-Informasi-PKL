@@ -52,15 +52,21 @@ public class Dashboard extends javax.swing.JFrame {
         tabelAbsen();
         tabelDataSiswa();
         tabelDataSekolah();
+        tabselJadwalPsg();
+        tabelNilaiSiswa();
         ButtonGroup bg = new ButtonGroup();
         ButtonGroup bg2 = new ButtonGroup();
+        ButtonGroup bg3 = new ButtonGroup();
         
         bg.add(jRadioButton1);
         bg.add(jRadioButton2);
         bg2.add(jRadioButton3);
         bg2.add(jRadioButton4);
+        bg3.add(jRadioButton5);
+        bg3.add(jRadioButton6);
         jRadioButton3.setSelected(true);
         jRadioButton2.setSelected(true);
+        jRadioButton5.setSelected(true);
         
     }
 
@@ -117,7 +123,7 @@ public class Dashboard extends javax.swing.JFrame {
         jTextField6 = new javax.swing.JTextField();
         jLabel47 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tabelJadwal = new javax.swing.JTable();
         dataSiswa = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -156,16 +162,18 @@ public class Dashboard extends javax.swing.JFrame {
         jTextField9 = new javax.swing.JTextField();
         jLabel50 = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
-        jLabel52 = new javax.swing.JLabel();
         jLabel53 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable5 = new javax.swing.JTable();
+        tabelNilai = new javax.swing.JTable();
         jLabel54 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
         jTextField11 = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jTextField12 = new javax.swing.JTextField();
+        jLabel48 = new javax.swing.JLabel();
+        jRadioButton5 = new javax.swing.JRadioButton();
+        jRadioButton6 = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -455,9 +463,14 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel4.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 240, 30));
 
         jLabel47.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\btn_cari.png")); // NOI18N
+        jLabel47.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel47MouseClicked(evt);
+            }
+        });
         jPanel4.add(jLabel47, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 80, -1, -1));
 
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tabelJadwal.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -465,7 +478,7 @@ public class Dashboard extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane4.setViewportView(jTable4);
+        jScrollPane4.setViewportView(tabelJadwal);
 
         jPanel4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 1020, 550));
 
@@ -645,18 +658,25 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel13.add(jTextField9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 200, 30));
 
         jLabel50.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\btn_simpan.png")); // NOI18N
+        jLabel50.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel50MouseClicked(evt);
+            }
+        });
         jPanel13.add(jLabel50, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, -1));
 
         jLabel51.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\btn_ubah.png")); // NOI18N
+        jLabel51.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel51MouseClicked(evt);
+            }
+        });
         jPanel13.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, -1));
 
-        jLabel52.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\btn_hapus.png")); // NOI18N
-        jPanel13.add(jLabel52, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, -1, -1));
-
         jLabel53.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\btn_cetak.png")); // NOI18N
-        jPanel13.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, -1, -1));
+        jPanel13.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, -1, -1));
 
-        jTable5.setModel(new javax.swing.table.DefaultTableModel(
+        tabelNilai.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -664,12 +684,17 @@ public class Dashboard extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane5.setViewportView(jTable5);
+        tabelNilai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tabelNilaiMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(tabelNilai);
 
         jPanel13.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 410, 1040, 280));
 
         jLabel54.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
-        jLabel54.setText("Jumlah Absen :");
+        jLabel54.setText("Masukan Nilai :");
         jPanel13.add(jLabel54, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 180, -1, 30));
 
         jTextField10.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
@@ -688,6 +713,20 @@ public class Dashboard extends javax.swing.JFrame {
 
         jTextField12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jPanel13.add(jTextField12, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 80, 200, 30));
+
+        jLabel48.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
+        jLabel48.setText("Divisi :");
+        jPanel13.add(jLabel48, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, 30));
+
+        jRadioButton5.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButton5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jRadioButton5.setText("PSG");
+        jPanel13.add(jRadioButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 230, -1, 30));
+
+        jRadioButton6.setBackground(new java.awt.Color(255, 255, 255));
+        jRadioButton6.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jRadioButton6.setText("PKL");
+        jPanel13.add(jRadioButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 230, -1, 30));
 
         nilaiSiswa.add(jPanel13);
         jPanel13.setBounds(0, 0, 1220, 880);
@@ -1041,6 +1080,10 @@ void ShowDate(){
                 ps.executeUpdate();
                JOptionPane.showMessageDialog(null, "Data terhapus");
                tabelDataSiswa();
+               tabelDataSekolah();
+               tabelNilaiSiswa();
+               tabselJadwalPsg();
+               tabelAbsen();
                reset();
             } else {
                 
@@ -1075,6 +1118,107 @@ void ShowDate(){
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jLabel44MouseClicked
+
+    private void tabelNilaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tabelNilaiMouseClicked
+try{ int i = tabelNilai.getSelectedRow();
+            TableModel mode = tabelNilai.getModel();
+             
+            jTextField7.setText(mode.getValueAt(i, 0).toString());
+            jTextField8.setText(mode.getValueAt(i, 1).toString());
+            jTextField9.setText(mode.getValueAt(i, 2).toString());
+            jTextField12.setText(mode.getValueAt(i, 3).toString());
+            jTextField11.setText(mode.getValueAt(i, 4).toString());
+            
+            
+           String divisi = mode.getValueAt(i, 5).toString();
+             if ( "PSG".equals(divisi)){
+                jRadioButton5.setSelected(true);
+            } else {
+                jRadioButton6.setSelected(true);
+            }
+             jTextField10.setText(mode.getValueAt(i, 6).toString());
+             jTextField7.setEditable(false);
+             jTextField8.setEditable(false);
+             jTextField9.setEditable(false);
+             jTextField12.setEditable(false);
+             jTextField11.setEditable(false);
+             
+        } catch(Exception e){
+
+        }    
+    }//GEN-LAST:event_tabelNilaiMouseClicked
+
+    private void jLabel50MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel50MouseClicked
+       try{
+           
+           PreparedStatement ps = c.prepareStatement("insert into nilai values (?,?)");
+           ps.setString(1, jTextField7.getText());
+           ps.setString(2, jTextField10.getText());
+          
+          
+           ps.executeUpdate();
+           JOptionPane.showMessageDialog(null, "Nilai berhasil ditambahkan");
+           tabelNilaiSiswa();
+            jTextField7.setText("");
+            jTextField8.setText("");
+            jTextField9.setText(""); 
+            jTextField10.setText("");
+            jTextField11.setText("");
+            jTextField12.setText("");
+       } catch(Exception e){
+           System.out.println("Gagal tambahkan data");
+           JOptionPane.showMessageDialog(null,e);
+       
+       }
+    }//GEN-LAST:event_jLabel50MouseClicked
+
+    private void jLabel51MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel51MouseClicked
+       try{
+           PreparedStatement ps = c.prepareStatement("UPDATE nilai SET nilai_siswa=? WHERE nis_siswa=?");
+           
+           ps.setString(1, jTextField10.getText());
+           ps.setString(2, jTextField7.getText());
+           
+      
+           ps.executeUpdate();
+           JOptionPane.showMessageDialog(null, "Data berhasil diubah");
+           tabelNilaiSiswa();
+          jTextField7.setText("");
+            jTextField8.setText("");
+            jTextField9.setText(""); 
+            jTextField10.setText("");
+            jTextField11.setText("");
+            jTextField12.setText("");
+       
+       } catch(Exception e){
+           System.out.println("Gagal ubah data");
+           JOptionPane.showMessageDialog(null,e);
+       
+       }
+    }//GEN-LAST:event_jLabel51MouseClicked
+
+    private void jLabel47MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel47MouseClicked
+        Object [] header = {"NIS","Nama Siswa","Tanggal Mulai","Tanggal Selesai","Divisi"
+        };
+        DefaultTableModel model = new DefaultTableModel(null,header);
+        tabelJadwal.setModel(model);
+        try{
+            PreparedStatement ps = c.prepareStatement("select * from datasiswa where concat(Nis_Siswa,Nama_Siswa,Asal_Sekolah,Jenis_Kelamin,Tanggal_Masuk,Tanggal_Selesai,Divisi) like '%"+jTextField6.getText()+"%'");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                String c1 = rs.getString("Nis_Siswa");
+                String c2 = rs.getString("Nama_Siswa");
+                String c5 = rs.getString("Tanggal_Masuk");
+                String c6 = rs.getString("Tanggal_Selesai");
+                String c7 = rs.getString("Divisi");
+                
+                String[] data = {c1,c2,c5,c6,c7};
+                model.addRow(data);
+            }
+        } catch( Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_jLabel47MouseClicked
 public void tabelAbsen(){
         Object [] header = {"NIS","Tanggal Absen","Waktu Absen"
     };
@@ -1125,8 +1269,66 @@ public void tabelDataSiswa(){
         }
     }
 
+public void tabelNilaiSiswa(){
+        Object [] header = {"NIS","Nama Siswa","Asal Sekolah","Tanggal Mulai","Tanggal Selesai","Divisi","Nilai"
+    };
+        
+        DefaultTableModel model = new DefaultTableModel(null,header);
+        tabelNilai.setModel(model);
+        try{
+            Connection c = getConnection();
+            PreparedStatement ps = c.prepareStatement("SELECT datasiswa.Nis_Siswa, datasiswa.Nama_Siswa, datasiswa.Asal_Sekolah, datasiswa.Tanggal_Masuk, datasiswa.Tanggal_Selesai, datasiswa.Divisi, nilai.nilai_siswa from datasiswa LEFT JOIN nilai ON datasiswa.Nis_Siswa=nilai.nis_siswa ORDER BY datasiswa.Nis_Siswa ASC;");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                String c1 = rs.getString("Nis_Siswa");
+                String c2 = rs.getString("Nama_Siswa");
+                String c3 = rs.getString("Asal_Sekolah");
+                String c5 = rs.getString("Tanggal_Masuk");
+                String c6 = rs.getString("Tanggal_Selesai");
+                String c7 = rs.getString("Divisi");
+                String c8 = rs.getString("nilai_siswa");
+                
+                String[] data = {c1,c2,c3,c5,c6,c7,c8};
+                model.addRow(data);
+            }
+            jTextField7.setEditable(false);
+             jTextField8.setEditable(false);
+             jTextField9.setEditable(false);
+             jTextField12.setEditable(false);
+             jTextField11.setEditable(false);
+        } catch( Exception e){
+            
+        }
+    }
+
+public void tabselJadwalPsg(){
+    Object [] header = {"NIS","Nama Siswa","Tanggal Mulai","Tanggal Selesai","Divisi"
+    };
+        
+        DefaultTableModel model = new DefaultTableModel(null,header);
+        tabelJadwal.setModel(model);
+        try{
+            
+            PreparedStatement ps = c.prepareStatement("select * from datasiswa order by Nis_Siswa asc");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                String c1 = rs.getString("Nis_Siswa");
+                String c2 = rs.getString("Nama_Siswa");
+                String c5 = rs.getString("Tanggal_Masuk");
+                String c6 = rs.getString("Tanggal_Selesai");
+                String c7 = rs.getString("Divisi");
+                
+                String[] data = {c1,c2,c5,c6,c7};
+                model.addRow(data);
+            }
+            
+        } catch( Exception e){
+            
+        }
+}
+
 public void tabelDataSekolah(){
-        Object [] header = {"NIS","Nama Siswa","Asal Sekolah", "Jenis Kelamin","Tanggal Mulai","Tanggal Selesai","Divisi"
+        Object [] header = {"NIS","Nama Siswa","Asal Sekolah", "Jenis Kelamin","Tanggal Mulai","Tanggal Selesai"
     };
         
         DefaultTableModel model = new DefaultTableModel(null,header);
@@ -1142,9 +1344,8 @@ public void tabelDataSekolah(){
                 String c4 = rs.getString("Jenis_Kelamin");
                 String c5 = rs.getString("Tanggal_Masuk");
                 String c6 = rs.getString("Tanggal_Selesai");
-                String c7 = rs.getString("Divisi");
                 
-                String[] data = {c1,c2,c3,c4,c5,c6,c7};
+                String[] data = {c1,c2,c3,c4,c5,c6};
                 model.addRow(data);
             }
             
@@ -1231,10 +1432,10 @@ public void tabelDataSekolah(){
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
+    private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel52;
     private javax.swing.JLabel jLabel53;
     private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel6;
@@ -1257,13 +1458,13 @@ public void tabelDataSekolah(){
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRadioButton5;
+    private javax.swing.JRadioButton jRadioButton6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTable jTable4;
-    private javax.swing.JTable jTable5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField10;
     private javax.swing.JTextField jTextField11;
@@ -1280,6 +1481,8 @@ public void tabelDataSekolah(){
     private javax.swing.JPanel nilaiSiswa;
     private static javax.swing.JTable tabelDataSekolah;
     public static javax.swing.JTable tabelDataSiswa;
+    private static javax.swing.JTable tabelJadwal;
+    private static javax.swing.JTable tabelNilai;
     private static javax.swing.JTable tabelabsen;
     // End of variables declaration//GEN-END:variables
 }
