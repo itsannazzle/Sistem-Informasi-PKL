@@ -16,11 +16,17 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -116,6 +122,8 @@ public class Dashboard extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         tabelDataSekolah = new javax.swing.JTable();
         jTextField5 = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
         jadwaPsg = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
@@ -124,6 +132,8 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel47 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tabelJadwal = new javax.swing.JTable();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
         dataSiswa = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -439,6 +449,22 @@ public class Dashboard extends javax.swing.JFrame {
         jTextField5.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jPanel10.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, 240, 30));
 
+        jLabel17.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\close.png")); // NOI18N
+        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel17MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, -1, -1));
+
+        jLabel18.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\minim.png")); // NOI18N
+        jLabel18.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel18MouseClicked(evt);
+            }
+        });
+        jPanel10.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, -1, -1));
+
         dataSekolah.add(jPanel10);
         jPanel10.setBounds(0, 0, 1040, 700);
 
@@ -481,6 +507,22 @@ public class Dashboard extends javax.swing.JFrame {
         jScrollPane4.setViewportView(tabelJadwal);
 
         jPanel4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 1020, 550));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\close.png")); // NOI18N
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, -1, -1));
+
+        jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\minim.png")); // NOI18N
+        jLabel10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel10MouseClicked(evt);
+            }
+        });
+        jPanel4.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, -1, -1));
 
         jadwaPsg.add(jPanel4);
         jPanel4.setBounds(0, 0, 1260, 880);
@@ -674,6 +716,11 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel13.add(jLabel51, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, -1));
 
         jLabel53.setIcon(new javax.swing.ImageIcon("C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\btn_cetak.png")); // NOI18N
+        jLabel53.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel53MouseClicked(evt);
+            }
+        });
         jPanel13.add(jLabel53, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, -1, -1));
 
         tabelNilai.setModel(new javax.swing.table.DefaultTableModel(
@@ -1136,7 +1183,15 @@ try{ int i = tabelNilai.getSelectedRow();
             } else {
                 jRadioButton6.setSelected(true);
             }
-             jTextField10.setText(mode.getValueAt(i, 6).toString());
+             System.out.println("some");
+             System.out.println(mode.getValueAt(i, 6).toString());
+             String s = mode.getValueAt(i, 6).toString();
+             if(mode.getValueAt(i, 6).equals(null)){
+                 jTextField10.setText("Belum dinilai");
+             } else {
+                 jTextField10.setText(s);
+             }
+             
              jTextField7.setEditable(false);
              jTextField8.setEditable(false);
              jTextField9.setEditable(false);
@@ -1219,6 +1274,47 @@ try{ int i = tabelNilai.getSelectedRow();
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jLabel47MouseClicked
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel10MouseClicked
+
+    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel17MouseClicked
+
+    private void jLabel18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel18MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel18MouseClicked
+
+    private void jLabel53MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel53MouseClicked
+     
+        String nis_siswa = jTextField7.getText();
+        System.out.println(jTextField10.getText());
+        if(jTextField10.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Input nilai");
+           
+        } else {
+            try {
+            HashMap param = new HashMap();
+            param.put("parameter1",nis_siswa);
+            String rpt = "src/report/surat_siswa.jrxml";
+            JasperReport jr = JasperCompileManager.compileReport(rpt);
+            JasperPrint jpp = JasperFillManager.fillReport(jr, param,c);
+            JasperViewer.viewReport(jpp,false);
+            
+            
+        } catch(Exception e) {
+            System.out.println(e);
+            JOptionPane.showMessageDialog(null, e);
+        }
+        }
+        
+    }//GEN-LAST:event_jLabel53MouseClicked
 public void tabelAbsen(){
         Object [] header = {"NIS","Tanggal Absen","Waktu Absen"
     };
@@ -1396,12 +1492,15 @@ public void tabelDataSekolah(){
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -1441,6 +1540,7 @@ public void tabelDataSekolah(){
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
