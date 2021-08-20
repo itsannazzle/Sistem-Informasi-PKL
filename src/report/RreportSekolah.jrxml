@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0679abf2-43e5-42e0-b24f-722f16c3da04">
+	<property name="ireport.zoom" value="1.464100000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="184"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT Asal_Sekolah, count(*) FROM datasiswa WHERE Asal_Sekolah is not null GROUP BY Asal_Sekolah;]]>
+	</queryString>
+	<field name="Asal_Sekolah" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="count(*)" class="java.lang.Long"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="168" splitType="Stretch">
+			<staticText>
+				<reportElement x="98" y="58" width="405" height="35" uuid="95fc2e22-2e50-4470-bd75-4d2e8fd9814c"/>
+				<box>
+					<pen lineColor="#FFFFFF"/>
+					<topPen lineColor="#FFFFFF"/>
+					<leftPen lineColor="#FFFFFF"/>
+					<bottomPen lineColor="#FFFFFF"/>
+					<rightPen lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PT Astra International Tbk Daihatsu]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="93" width="554" height="20" uuid="68f7d66e-54dc-4bba-8d67-1d91a7669156"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Jl. Alternatif Cibubur KM1 Harjamukti Depok Jawa Barat - Tel (62 21) 84599678/9 Fax (62 21) 84599680]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="119" width="553" height="1" uuid="2f0d3db5-f383-4612-856e-9960dd841fa2"/>
+			</line>
+			<image>
+				<reportElement x="2" y="2" width="164" height="46" uuid="8922c9b6-9523-43d7-ba8c-01f0c3874b01"/>
+				<imageExpression><![CDATA["C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\logo fix.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="70" y="128" width="405" height="26" uuid="44dd653f-2ce2-4111-8a51-81bf9a0f3f06"/>
+				<box>
+					<pen lineColor="#FFFFFF"/>
+					<topPen lineColor="#FFFFFF"/>
+					<leftPen lineColor="#FFFFFF"/>
+					<bottomPen lineColor="#FFFFFF"/>
+					<rightPen lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laporan Data Sekolah Siswa PKL dan PSG]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="301" y="0" width="96" height="35" uuid="88ca88bc-4c79-4b1f-8997-85365dd8e324"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Jumlah Siswa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="138" y="0" width="163" height="35" uuid="3d4848ee-6432-4811-9a0c-5dacfc274d45"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Asal Sekolah]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="138" y="0" width="163" height="20" uuid="17c9e077-e77d-4b26-bac5-759e02ac39ed"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Asal_Sekolah}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="301" y="0" width="96" height="20" uuid="ac400d29-c913-44c6-9cef-6e501dea17da"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{count(*)}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="213" splitType="Stretch">
+			<staticText>
+				<reportElement x="397" y="125" width="131" height="20" uuid="7cec8056-52cf-4ecf-859a-e4a22ea12a88"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Agustinus Karyono ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="397" y="145" width="132" height="1" uuid="64b05de4-768b-40f3-9b6a-2a5674396b93"/>
+			</line>
+			<staticText>
+				<reportElement x="391" y="30" width="69" height="20" uuid="8f4fb51a-a358-463a-a5c3-1edb5b336a4e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Mengetahui,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="397" y="146" width="131" height="20" uuid="1851a05d-209a-46ee-8660-ab78ff7e08d9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Kepala Bengkel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="50" width="45" height="20" uuid="e21c48c7-aac4-4870-8358-1a506955f9e8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Dibuat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="126" width="131" height="20" uuid="7845069b-cd5b-4168-844b-e83eb008656f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Muhammad Rohman]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="25" y="30" width="45" height="20" uuid="ad01c07b-e593-42fa-aee8-56795b779cc5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Depok,]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="70" y="30" width="104" height="20" uuid="f54e26e5-4b64-400b-9d4f-e578c49cfc04"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="26" y="145" width="132" height="1" uuid="2a95609a-1916-4927-9dde-c341d629ef8c"/>
+			</line>
+			<staticText>
+				<reportElement x="26" y="146" width="131" height="20" uuid="95fbb0e9-3344-4e27-96bc-4a339961fbcc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[PIC, PKL, PSG]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

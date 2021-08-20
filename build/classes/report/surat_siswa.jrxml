@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1af74bf4-9ab4-4790-b546-16d2a5b84b0f">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.1000000000000008"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="349"/>
 	<parameter name="parameter1" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT datasiswa.Nis_Siswa, datasiswa.Nama_Siswa, datasiswa.Asal_Sekolah, datasiswa.Tanggal_Masuk, datasiswa.Tanggal_Selesai, datasiswa.Divisi, nilai.nilai_siswa from datasiswa LEFT JOIN nilai ON datasiswa.Nis_Siswa=nilai.nis_siswa WHERE datasiswa.Nis_Siswa = $P{parameter1} ORDER BY datasiswa.Nis_Siswa ASC;]]>
@@ -32,13 +32,41 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="131" splitType="Stretch">
+		<band height="119" splitType="Stretch">
+			<staticText>
+				<reportElement x="88" y="56" width="405" height="35" uuid="01f06c52-7fb0-4ccd-bcf3-fc9369d87160"/>
+				<box>
+					<pen lineColor="#FFFFFF"/>
+					<topPen lineColor="#FFFFFF"/>
+					<leftPen lineColor="#FFFFFF"/>
+					<bottomPen lineColor="#FFFFFF"/>
+					<rightPen lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PT Astra International Tbk Daihatsu]]></text>
+			</staticText>
 			<image>
-				<reportElement x="383" y="0" width="172" height="71" uuid="2e11656f-87cb-41f8-8450-863613945186"/>
-				<imageExpression><![CDATA["E:\\rohamn\\NetBeansProjects\\pklpsg\\dai.jpg"]]></imageExpression>
+				<reportElement x="10" y="10" width="164" height="46" uuid="20e2eeea-6586-43c8-bec6-fc00dcd793fa"/>
+				<imageExpression><![CDATA["C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\logo fix.jpg"]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="116" y="71" width="329" height="35" uuid="fbb194a1-93b5-4cc2-b7bc-b85938fd3716"/>
+				<reportElement x="0" y="91" width="555" height="20" uuid="a53d5dfb-bf2b-4620-b43e-503348b5e37d"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Jl. Alternatif Cibubur KM1 Harjamukti Depok Jawa Barat - Tel (62 21) 84599678/9 Fax (62 21) 84599680]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="117" width="555" height="1" uuid="2cbdb9d7-d6d3-4327-b1e3-35c72a0bc7f1"/>
+			</line>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="65">
+			<staticText>
+				<reportElement x="105" y="0" width="329" height="35" uuid="fbb194a1-93b5-4cc2-b7bc-b85938fd3716"/>
 				<box>
 					<pen lineColor="#FFFFFF"/>
 					<topPen lineColor="#FFFFFF"/>
@@ -52,7 +80,7 @@
 				<text><![CDATA[SURAT KETERANGAN]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="106" width="555" height="25" uuid="1a8cda1c-7f75-4e7c-845b-5666f875b1c2"/>
+				<reportElement x="36" y="35" width="493" height="25" uuid="1a8cda1c-7f75-4e7c-845b-5666f875b1c2"/>
 				<box>
 					<pen lineColor="#FFFFFF"/>
 					<topPen lineColor="#FFFFFF"/>
@@ -65,12 +93,8 @@
 				</textElement>
 				<text><![CDATA[Kami yang bertanda tangan di bawah ini menerangkan bahwa :]]></text>
 			</staticText>
-			<image>
-				<reportElement x="0" y="0" width="245" height="60" uuid="e9c4f37b-a306-41b0-a2fd-a5b7f8bfb6de"/>
-				<imageExpression><![CDATA["E:\\rohamn\\NetBeansProjects\\pklpsg\\astraaaaaa.jpg"]]></imageExpression>
-			</image>
 		</band>
-	</title>
+	</columnHeader>
 	<detail>
 		<band height="305" splitType="Stretch">
 			<staticText>
@@ -267,54 +291,43 @@
 	<columnFooter>
 		<band height="304" splitType="Stretch">
 			<staticText>
-				<reportElement x="403" y="30" width="100" height="20" uuid="cc2c6cb1-6e63-418e-8624-7e5049618926"/>
-				<box>
-					<pen lineColor="#FFFFFF"/>
-					<topPen lineColor="#FFFFFF"/>
-					<leftPen lineColor="#FFFFFF"/>
-					<bottomPen lineColor="#FFFFFF"/>
-					<rightPen lineColor="#FFFFFF"/>
-				</box>
-				<textElement textAlignment="Center">
-					<font fontName="Times New Roman" size="14"/>
+				<reportElement x="389" y="30" width="45" height="20" uuid="df27effd-3e20-461e-8526-5afa3952cb3e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
 				</textElement>
-				<text><![CDATA[Tertanda]]></text>
+				<text><![CDATA[Depok,]]></text>
 			</staticText>
-			<textField pattern="dd MMMMM yyyy">
-				<reportElement x="455" y="0" width="100" height="20" uuid="55cd2380-2950-41b2-a15f-317ff3129383"/>
-				<textElement>
-					<font fontName="Times New Roman" size="14"/>
+			<staticText>
+				<reportElement x="390" y="126" width="131" height="20" uuid="f7d44fa9-8a58-431b-82ea-45eabbdc20d2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Agustinus Karyono ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="390" y="145" width="132" height="1" uuid="c2f606e2-c94a-4b4a-a790-0ff98f9f96aa"/>
+			</line>
+			<staticText>
+				<reportElement x="390" y="146" width="131" height="20" uuid="33e10134-80e3-4047-b279-b2c27b2da34d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Kepala Bengkel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="390" y="50" width="45" height="20" uuid="9d304491-886b-4ecf-adcb-8966c88df951"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Dibuat]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="434" y="30" width="104" height="20" uuid="d751ef4c-4daf-42b9-9730-b63b5d84fe94"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
 				</textElement>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="345" y="0" width="100" height="20" uuid="b5f7fea1-28a2-4de1-9f01-d992e9f32a50"/>
-				<box>
-					<pen lineColor="#FFFFFF"/>
-					<topPen lineColor="#FFFFFF"/>
-					<leftPen lineColor="#FFFFFF"/>
-					<bottomPen lineColor="#FFFFFF"/>
-					<rightPen lineColor="#FFFFFF"/>
-				</box>
-				<textElement textAlignment="Right" verticalAlignment="Top">
-					<font fontName="Times New Roman" size="14"/>
-				</textElement>
-				<text><![CDATA[Jakarta,]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="325" y="86" width="230" height="20" uuid="439ff6ae-f094-4a71-8abc-276ae052a748"/>
-				<box>
-					<pen lineColor="#FFFFFF"/>
-					<topPen lineColor="#FFFFFF"/>
-					<leftPen lineColor="#FFFFFF"/>
-					<bottomPen lineColor="#FFFFFF"/>
-					<rightPen lineColor="#FFFFFF"/>
-				</box>
-				<textElement>
-					<font fontName="Times New Roman" size="14"/>
-				</textElement>
-				<text><![CDATA[Management PT.Astra Daihatsu Cibubur]]></text>
-			</staticText>
 		</band>
 	</columnFooter>
 </jasperReport>

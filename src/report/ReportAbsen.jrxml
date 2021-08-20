@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="79163210-9eab-4c75-8e98-589c166e4778">
+	<property name="ireport.zoom" value="1.464100000000005"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="135"/>
+	<queryString>
+		<![CDATA[SELECT absen.nis, datasiswa.Nama_Siswa, datasiswa.Divisi, absen.tanggal, absen.waktu FROM `absen` INNER JOIN datasiswa ON absen.nis = datasiswa.Nis_Siswa ORDER by `tanggal` DESC;]]>
+	</queryString>
+	<field name="nis" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Nama_Siswa" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Divisi" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="tanggal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="waktu" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="166" splitType="Stretch">
+			<staticText>
+				<reportElement x="98" y="56" width="405" height="35" uuid="7d2887f5-91cb-46bf-9a74-7b2de528f05f"/>
+				<box>
+					<pen lineColor="#FFFFFF"/>
+					<topPen lineColor="#FFFFFF"/>
+					<leftPen lineColor="#FFFFFF"/>
+					<bottomPen lineColor="#FFFFFF"/>
+					<rightPen lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PT Astra International Tbk Daihatsu]]></text>
+			</staticText>
+			<line>
+				<reportElement x="2" y="117" width="553" height="1" uuid="3cd5fe32-98af-4277-9d80-a76ddf0cbc0c"/>
+			</line>
+			<staticText>
+				<reportElement x="1" y="91" width="554" height="20" uuid="b71249a1-18b4-4853-8dd5-a0de85e8dbd5"/>
+				<textElement textAlignment="Center">
+					<font fontName="Times New Roman" size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Jl. Alternatif Cibubur KM1 Harjamukti Depok Jawa Barat - Tel (62 21) 84599678/9 Fax (62 21) 84599680]]></text>
+			</staticText>
+			<image>
+				<reportElement x="2" y="0" width="164" height="46" uuid="1b8c0cf2-c449-46f4-88ef-0dd214775ec9"/>
+				<imageExpression><![CDATA["C:\\Users\\ASUS\\Documents\\NetBeansProjects\\SistemInformasi_PKL\\PKL_IMG\\logo fix.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="92" y="130" width="405" height="26" uuid="3e5f7443-1d5e-4e75-937f-fbd535052da0"/>
+				<box>
+					<pen lineColor="#FFFFFF"/>
+					<topPen lineColor="#FFFFFF"/>
+					<leftPen lineColor="#FFFFFF"/>
+					<bottomPen lineColor="#FFFFFF"/>
+					<rightPen lineColor="#FFFFFF"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Laporan Data Absen Siswa PKL dan PSG]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="35" splitType="Stretch">
+			<staticText>
+				<reportElement x="91" y="0" width="135" height="35" uuid="d6a3cd8f-4a65-4caa-a479-0008ce17be96"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nama Siswa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="313" y="0" width="121" height="35" uuid="bdf6e5a8-40ee-4dc4-8c7f-c7987da93f52"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tanggal Absen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="91" height="35" uuid="d5faa385-394a-42f5-bb59-54533b8d196a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NIS Siswa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="434" y="0" width="121" height="35" uuid="7e6bfc19-5e05-494b-a6e1-3fefff0d6880"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Waktu Absen]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="226" y="0" width="87" height="35" uuid="6271adea-9771-48df-a57f-fcd4e4225529"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Divisi]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="91" y="0" width="135" height="20" uuid="d9c6d05e-b583-4100-87a3-1429518efebe"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Nama_Siswa}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="313" y="0" width="121" height="20" uuid="fe055694-027b-41b1-9f6f-c87de97d2cd3"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{tanggal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="434" y="0" width="121" height="20" uuid="5379fb4e-6bf9-4099-957f-5b62bdc887ce"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{waktu}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="91" height="20" uuid="01360fca-4a64-49ca-8b7b-a34b2e464128"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nis}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="226" y="0" width="87" height="20" uuid="5f3e4466-161d-4ae4-a632-38e440e038b1"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{Divisi}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="221" splitType="Stretch">
+			<staticText>
+				<reportElement x="405" y="86" width="78" height="20" uuid="9a244e2a-ce0a-492c-89b1-405e07871a4d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Mengetahui,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="406" y="160" width="131" height="20" uuid="4cb15d31-8658-45d8-8af6-b9434c332c9d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Agustinus Karyono ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="181" width="131" height="20" uuid="f302b108-6958-4ee9-a168-61cce341b309"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Kepala Bengkel]]></text>
+			</staticText>
+			<line>
+				<reportElement x="406" y="180" width="132" height="1" uuid="ec17bbae-83f0-44ed-921d-d30407118d59"/>
+			</line>
+			<staticText>
+				<reportElement x="3" y="86" width="45" height="20" uuid="930f75aa-b4e6-424e-99d4-cb03dd6c30df"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Dibuat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="162" width="131" height="20" uuid="b78ba16a-4d0c-4257-b9ec-ad3de9deb2d8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Muhammad Rohman]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="66" width="45" height="20" uuid="5a558581-d18f-46ec-bb90-acd4380b6c6e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Depok,]]></text>
+			</staticText>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="47" y="66" width="104" height="20" uuid="cd2ee68d-71a6-47e4-97f0-a435f45bc8ac"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="3" y="181" width="132" height="1" uuid="2eeab3de-9f36-4961-ac6d-6b0eb10d12aa"/>
+			</line>
+			<staticText>
+				<reportElement x="3" y="182" width="131" height="20" uuid="603ea411-cf7e-4afd-87a3-d1ccc285dcb5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="false"/>
+				</textElement>
+				<text><![CDATA[PIC, PKL, PSG]]></text>
+			</staticText>
+		</band>
+	</columnFooter>
+</jasperReport>
